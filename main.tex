@@ -1,6 +1,15 @@
 \documentclass{report}
 
 \usepackage{graphicx} % Required for inserting images
+\usepackage{blindtext}
+\usepackage{geometry}
+\geometry{
+ a4paper,
+ top=30mm,
+ left=30mm,
+ right=20mm,
+ bottom=20mm
+}
 
 % \degre{Graduação}
 % \department{Instituto de Engenharia}
@@ -9,21 +18,26 @@
 \author{Nilton Aguiar dos Santos}
 \date{Abril de 2024}
 \title{Utilização de Filosofias Modernas de Computação na Reconciliação de Dados}   
+% Terceira Pessoa
+% No tempo Presente
+% Citação Direta
+% Citação indireta
+% No inicio de cada sessão um resumo dela
 
 \begin{document}
 
 \maketitle
 
 \include{ch-Abstract}
-
 \include{ch-Acknowledgements}
 
 \tableofcontents
+\listoffigures
 
-\include{ch-Introduction}
-
-\include{ch-Methodology}
-
-\include{ch-Conclusions}
+\include{ch-introduction}
+\include{ch-methodology}
+\include{ch-conclusion}
+\appendix
+\include{appendix}
 
 \end{document}
