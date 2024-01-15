@@ -1,0 +1,271 @@
+%% Este trabalho é uma adequação das normas de TCC
+%% da Universidade Federal de Mato Grosso (Faculdade de Engenharia) 
+%% de acordo com a Norma ABNT.
+
+%% ========================================================================
+%% Opções: \documentclass[tipo/curso]{faeng}
+%% ------------------------------------------------------------------------
+%% Tipo:
+%% 	tcc:         Formata documento para TCC
+%%	qualitcc:    Formata documento para qualificação de TCC
+%% ------------------------------------------------------------------------
+%% Curso:
+%%   eq:     Engenharia Química
+%%   em:     Engenharia de Minas
+%%   ec:     Engenharia de Computação
+%%   et:     Engenharia de Transportes
+%%   eca:    Engenharia de Controle e Automação
+%% ------------------------------------------------------------------------
+\documentclass[tcc/eca]{faeng}
+%% ========================================================================
+
+%% ========================================================================
+%% PACOTES
+%% ------------------------------------------------------------------------
+%% Pacotes fundamentais 
+%% ------------------------------------------------------------------------
+\usepackage{cmap}			% Mapear caracteres especiais no PDF
+\usepackage{lmodern}		% Usa a fonte Latin Modern			
+\usepackage{makeidx}        % Cria o indice
+\usepackage{hyperref}  		% Controla a formação do índice
+\usepackage{lastpage}		% Usado pela Ficha catalográfica
+\usepackage{indentfirst}	% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 		% Lista de simbolos
+\usepackage{graphicx}		% Inclusão de gráficos
+\usepackage[brazil]{babel}  % Codificação e uso de caracteres especiais.
+\usepackage[utf8]{inputenc}
+%% ------------------------------------------------------------------------
+%% Pacotes adicionais, usados apenas no âmbito do Modelo faeng
+%% ------------------------------------------------------------------------
+\usepackage{lipsum}				       % para geração de dummy text
+\usepackage[printonlyused]{acronym}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+%% ========================================================================
+
+%% ========================================================================
+%% Informações de dados para CAPA e FOLHA DE ROSTO
+%% ------------------------------------------------------------------------
+%% Título:
+%%	1. Título em português
+%%	2. Título em inglês
+\titulo{Aplicação web de dashboard de reconciliação de dados utilizando o método de minimização de funções multivariáveis com multiplicadores de Lagrange}{Data reconciliation dashboard web application using the multivariable function minimization method with Lagrange multipliers}
+%% ------------------------------------------------------------------------
+%% Autor:
+%%	1. Nome completo do autor
+%%	2. Formato de nome para bibliografia
+\autor{Nilton Aguiar dos Santos}{Santos, Nilton}
+%% ------------------------------------------------------------------------
+%% Cidade
+\local{Várzea Grande}
+%% ------------------------------------------------------------------------
+%% Ano de defesa
+\data{2024}
+%% ------------------------------------------------------------------------
+%% Nome do orientador
+\orientador{João Gustavo Coelho Pena}
+%% Nome do coorientador
+%\coorientador{Nome completo do coorientador}
+%% ========================================================================
+
+%% ========================================================================
+%% compila o indice
+%% ------------------------------------------------------------------------
+\makeindex
+%% ========================================================================
+
+%% ========================================================================
+%% Compila a lista de abreviaturas e siglas
+%% ------------------------------------------------------------------------
+\makenomenclature
+%% ========================================================================
+
+%% ========================================================================
+%% Inserir ficha catalográfica
+%%
+%% Caso o comando \inserirfichacatalografica seja definido, a ficha catalográfica
+%% será inserida atrás da folha de rosto. Caso contrário a página será deixada em branco.
+%%
+%% CUIDADO: Esta opção deve ser preenchida antes do comando \maketitle
+%% ------------------------------------------------------------------------
+%\inserirfichacatalografica{fichaCatalografica.pdf}
+%% ========================================================================
+
+%% ========================================================================
+%% Inserir folha de aprovação
+%%
+%% Caso o comando \inserirfolhaaprovacao seja definido, a a folha de aprovação
+%% será inserida.
+%% CUIDADO: Esta opção deve ser preenchida antes do comando \maketitle
+%% ------------------------------------------------------------------------
+%\inserirfolhaaprovacao{folhaAprovacao.pdf}
+%% ========================================================================
+
+%% ========================================================================
+%% INÍCIO DO DOCUMENTO
+%% ------------------------------------------------------------------------
+\begin{document}
+%% ------------------------------------------------------------------------
+%% ELEMENTOS PRÉ-TEXTUAIS
+%% ------------------------------------------------------------------------
+\pretextual
+%% ------------------------------------------------------------------------
+%% Insere Capa, Folha de rosto, Ficha catalográfica (se inserida)
+%% e folha de aprovação (se inserida).
+%% ------------------------------------------------------------------------
+\maketitle
+%% ------------------------------------------------------------------------
+%% Dedicatória
+%% ------------------------------------------------------------------------
+\imprimirdedicatoria{Dedico a mim mesmo, pq eu sou brabo, brabadíssimo, o brabo dos brabos.}
+%% ------------------------------------------------------------------------
+%% Agradecimentos
+%% ------------------------------------------------------------------------
+\imprimiragradecimentos{
+Agradeço ao Programa de Pós-Graduação em Engenharia
+Elétrica da Universidade Federal do Espírito Santo pela
+oportunidade de aprimoramento de minha formação profis-
+sional, em especial, por favorecer a realização de um sonho.
+Agradeço à CAPES (Coordenação de Aperfeiçoamento
+Pessoal de Nível Superior), pela bolsa concedida, sem a
+qual não teria sido possível minha dedicação ao presente
+trabalho.
+
+Agradeço à ArcelorMittal pela oportunidade de poder rea-
+lizar esta pesquisa. Certamente, o sucesso desta pesquisa
+seria incerto caso não fosse possível ter acesso às depen-
+dências da empresa e ao seu corpo técnico.
+
+Agradeço aos professores e funcionários do Departamento de Engenharia Elétrica, principalmente pela amizade e atenção.
+
+Agradeço ao professor Helder Roberto de Oliveira Rocha pela confiança, pela atenção e prontidão no auxílio para êxito deste projeto.
+
+Sou grato, especialmente, ao professor José Leandro Félix Salles pelo zelo, dedicação e parceria no desenvolvimento desta pesquisa e realização desta tese. Essa conquista foi possível por conta do seu entusiasmo, seu cuidado e esforço, pela paciência, pelo apoio técnico e psicológico. Aprendi a admirá-lo sob diversas perspectivas, e sou grato por tudo isso.
+
+Sou grato também aos engenheiros Valter Barbosa de Oliveira Júnior e Murilo Siqueira Muniz Teixeira da Silva, que deram amplo suporte à modelagem de processos, análises, simulações e testes dos modelos de previsão e otimização. Sou grato à minha esposa, aos meus pais e irmãs pelo carinho, pelo auxílio e pelo entusiasmo.
+
+Sou grato ao SENHOR Adonai Eloheinu, O Santo Deus de Avraham, e Yitz’chak, e Yisra’el. Sou grato por Suas bençãos, pela graça e favorecimento em minha vida.
+}
+%% ------------------------------------------------------------------------
+%% Epígrafe
+%% ------------------------------------------------------------------------
+\imprimirepigrafe{
+		``Frase.''\\
+		(Autor)
+}
+%% ========================================================================
+
+%% ========================================================================
+%% RESUMO e ABSTRACT
+%% ------------------------------------------------------------------------
+%% Resumo em português
+%% ------------------------------------------------------------------------ 
+\begin{resumo}{Reconciliação de Dados. Análise de Qualidade de Dados. Desenvolvimento Web. Multiplicadores de Lagrange.}
+
+Neste trabalho de conclusão de curso, desenvolveu-se um software Dashboard de análise de qualidade de dados e reconciliação de dados utilizando as técnicas de minimização de funções multivariáveis pelo método dos multiplicadores de Lagrange. A solução é desenvolvida em duas principais frentes, os conceitos computacionais modernos de experiência de usuário, agilidade no comportamento e (um monte mais de coisas), e a segunda frente sendo da aplicação dos cálculos matemáticos e estatísticos voltados ao problema de reconciliação de dados e qualidade de dados. Por meio do Dashboard de Reconciliação de Dados é possível modelar todo um processo industrial e a partir disso tanto calcular a reconciliação de dados como analisar a qualidade de dados em tempo real. O software é uma solução inovadora dado que não há um direto competidor para as funções oferecidas em um ambiente mais acessível e ágil. Ao longo deste trabalho o processo filosófico do desenvolvimento, os cálculos matemáticos, os conceitos estatísticos e computacionais e a lógica do software aplicado como solução são explicados de forma detalhada. Exemplos do código funcional e considerações finais sobre o trabalho realizado são apresentados nos últimos capítulos.
+
+\end{resumo}
+%% ------------------------------------------------------------------------
+%% Resumo em inglês
+%% ------------------------------------------------------------------------
+\begin{abstract}{Data Reconciliation. Data Quality Analysis. Web Development. Lagrange Multipliers.}
+
+Abstract.
+	
+\end{abstract}
+%% ========================================================================
+
+%% ========================================================================
+%% inserir lista de ilustrações
+%% ------------------------------------------------------------------------
+\listailustracoes
+%% ========================================================================
+
+%% ========================================================================
+%% inserir lista de tabelas
+%% ------------------------------------------------------------------------
+\listatabelas
+%% ========================================================================
+
+%% ========================================================================
+%% inserir lista de abreviaturas e siglas
+%% ------------------------------------------------------------------------
+\listasiglas{abreviaturas}
+%% ========================================================================
+
+%% ========================================================================
+%% inserir o sumario
+%% ------------------------------------------------------------------------
+\sumario
+%% ========================================================================
+
+%% ========================================================================
+%% ELEMENTOS TEXTUAIS
+%% ------------------------------------------------------------------------
+\mainmatter
+%% ========================================================================
+
+%% ========================================================================
+%% Capitulos 
+%% ------------------------------------------------------------------------
+%% Capítulo externo
+\include{introducao}
+%% ------------------------------------------------------------------------
+%% Capítulo
+\chapter[Capítulo]{Capítulo}
+Esse também é um capítulo.
+%% ------------------------------------------------------------------------
+%% Capítulo
+\include{abntex2-modelo-include-comandos}
+%% ------------------------------------------------------------------------
+%% Conclusão
+\chapter[Conclusão]{Conclusão}
+A conclusão também é um capítulo.
+%% ========================================================================
+
+%% ========================================================================
+%% ELEMENTOS PÓS-TEXTUAIS
+%% ------------------------------------------------------------------------
+\postextual
+%% ========================================================================
+
+%% ========================================================================
+%% Referências bibliográficas
+%% ------------------------------------------------------------------------
+\bibliography{abntex2-modelo-references}
+%% ========================================================================
+
+%% ========================================================================
+%% Glossário
+%% ------------------------------------------------------------------------
+%\glossary
+%% ========================================================================
+
+%% ========================================================================
+%% Apêndices
+%% ------------------------------------------------------------------------
+%% Inicia os apêndices
+%% ------------------------------------------------------------------------
+\begin{apendicesenv}
+\partapendices %% Imprime uma página indicando o início dos apêndices
+\chapter{Quisque libero justo} %% Divisão em capítulos, como no restante
+\lipsum[1-5]
+\end{apendicesenv}
+%% ========================================================================
+
+%% ========================================================================
+%% Anexos
+%% ------------------------------------------------------------------------
+%% Inicia os anexos
+%% ------------------------------------------------------------------------
+\begin{anexosenv}
+\partanexos  %% Imprime uma página indicando o início dos anexos
+\chapter{Morbi ultrices rutrum lorem.} %% Divisão em capítulos.
+\lipsum[1-25]
+\section{Test} %% Divisão em sessões.
+\lipsum[1-20]
+\end{anexosenv}
+%% ========================================================================
+
+\end{document}
