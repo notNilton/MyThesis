@@ -1,15 +1,3 @@
-%% Este trabalho é uma adequação das normas de TCC
-%% da Universidade Federal de Mato Grosso (Faculdade de Engenharia) 
-%% de acordo com a Norma ABNT.
-
-%% ==============================
-%% Opções: \documentclass[tipo/curso]{faeng}
-%% ------------------------------
-%% Tipo:
-%% 	tcc:         Formata documento para TCC
-%%	qualitcc:    Formata documento para qualificação de TCC
-%% ------------------------------
-%% Curso:
 %%   eq:     Engenharia Química
 %%   em:     Engenharia de Minas
 %%   ec:     Engenharia de Computação
@@ -50,7 +38,7 @@
 %% Título:
 %%	1. Título em português
 %%	2. Título em inglês
-\titulo{DRD - Uma aplicação web de reconciliação de dados utilizando métodos de Lagrange}{DRD - A data reconciliation dashboard web application using Lagrange's methods}
+\titulo{DRD - Uma aplicação web de análise e reconciliação de dados utilizando métodos de Lagrange}{DRD - A data analysis and reconciliation dashboard web application using Lagrange's methods}
 
 % Possiveis outras escolhas para o titulo.
 
@@ -151,7 +139,9 @@ Agradeço ao professor João Gustavo Coelho Pena pela confiança, parceria, pela
 %% ------------------------------ 
 \begin{resumo}{Reconciliação de Dados. Análise de Qualidade de Dados. Desenvolvimento Web. Multiplicadores de Lagrange.}
 
-Neste trabalho de conclusão de curso, desenvolveu-se um software Dashboard de análise de qualidade de dados e reconciliação de dados utilizando as técnicas de minimização de funções multivariáveis pelo método dos multiplicadores de Lagrange. A solução é desenvolvida em duas principais frentes, os conceitos computacionais modernos de experiência de usuário, agilidade no comportamento e (um monte mais de coisas), e a segunda frente sendo da aplicação dos cálculos matemáticos e estatísticos voltados ao problema de reconciliação de dados e qualidade de dados. Por meio do Dashboard de Reconciliação de Dados é possível modelar todo um processo industrial e a partir disso tanto calcular a reconciliação de dados como analisar a qualidade de dados em tempo real. O software é uma solução inovadora dado que não há um direto competidor para as funções oferecidas em um ambiente mais acessível e ágil. Ao longo deste trabalho o processo filosófico do desenvolvimento, os cálculos matemáticos, os conceitos estatísticos e computacionais e a lógica do software aplicado como solução são explicados de forma detalhada. Exemplos do código funcional e considerações finais sobre o trabalho realizado são apresentados nos últimos capítulos.
+Neste trabalho de conclusão de curso, desenvolveu-se DRD (Dashboard of Data Reconciliation), um software online de análise, reconciliação e qualidade de dados utilizando técnicas de minimização de funções multivariáveis pelo método dos multiplicadores de Lagrange. A solução toma como prioridade uma abordagem baseada na web, oferecendo ao usuário a capacidade de realizar a análise e reconciliação de dados de forma remota e eficiente, com foco nos conceitos computacionais modernos afim dessa experiência ser a mais facilitada possível. Se utiliza durante todo o software a aplicação dos cálculos matemáticos e estatísticos voltados ao problema de análise, reconciliação e qualidade de dados. 
+
+Por meio da ferramenta é possível modelar todo um processo industrial e alimenta-lo com os dados oriundos da planta em questão e a partir disso analisar, reconciliar e verificar a qualidade dos dados em tempo real. O software é uma solução inovadora dado que não há um direto competidor para as funções oferecidas em um ambiente mais acessível e ágil no estado de Mato Grosso. Ao longo deste trabalho, o processo filosófico do desenvolvimento, os cálculos matemáticos, os conceitos estatísticos, computacionais e a lógica do software aplicado como solução são explicados de forma detalhada. Exemplos do código funcional e considerações finais sobre o trabalho realizado são apresentados nos últimos capítulos.
 
 \end{resumo}
 %% ------------------------------
@@ -160,7 +150,11 @@ Neste trabalho de conclusão de curso, desenvolveu-se um software Dashboard de a
 \begin{abstract}{Data Reconciliation. Data Quality Analysis. Web Development. Lagrange Multipliers.}
 
 
-In this final course project, a Dashboard software for data quality analysis and data reconciliation was developed using techniques of multivariable function minimization through the method of Lagrange multipliers. The solution is developed on two main fronts: modern computational concepts of user experience, behavioral agility, and various other aspects; and the second front involves the application of mathematical and statistical calculations focused on the problem of data reconciliation and data quality. Through the Data Reconciliation Dashboard, it is possible to model an entire industrial process and, consequently, both calculate data reconciliation and analyze data quality in real time. The software represents an innovative solution, given the absence of a direct competitor for the functions offered in a more accessible and agile environment. Throughout this work, the philosophical development process, mathematical calculations, statistical and computational concepts, and the logic of the applied software solution are explained in detail. Examples of functional code and final considerations about the work performed are presented in the last chapters.
+[NÃO ATUALIZADO]
+
+In this undergraduate thesis, an online data analysis, reconciliation, and quality software was developed, nameed DRD (Dashboard of Data Reconciliation) using techniques of multivariable function minimization through the method of Lagrange multipliers. The solution prioritizes a web-based approach, providing users with the ability to perform data analysis and reconciliation remotely and efficiently, focusing on modern computational concepts to enhance the user experience. Throughout the software, mathematical and statistical calculations are applied to address the issues of data analysis, reconciliation, and quality.
+
+The tool allows modeling of an entire industrial process and feeds it with data from the relevant plant, enabling real-time analysis, reconciliation, and verification of data quality. The software stands as an innovative solution, as there is no direct competitor for the functions offered in a more accessible and agile environment in the state of Mato Grosso. Throughout this work, the philosophical development process, mathematical calculations, statistical and computational concepts, and the logic of the software as a solution are explained in detail. Examples of functional code and final considerations about the work are presented in the last chapters.
 	
 \end{abstract}
 %% ==============================
@@ -198,7 +192,6 @@ In this final course project, a Dashboard software for data quality analysis and
 %% ==============================
 %% Capitulos 
 %% ------------------------------
-%% Capítulo externo
 \include{Capitulos/Introducao}
 
 \include{Capitulos/Desenvolvimento}
@@ -207,33 +200,20 @@ In this final course project, a Dashboard software for data quality analysis and
 
 \include{Capitulos/Conclusao}
 
-%% ------------------------------
-%% Capítulo
-\include{abntex2-modelo-include-comandos}
-
 %% ==============================
 %% ELEMENTOS PÓS-TEXTUAIS
 %% ------------------------------
 \postextual
-%% ==============================
-
-%% ==============================
 %% Referências bibliográficas
 %% ------------------------------
 \bibliography{abntex2-modelo-references}
-%% ==============================
 
-%% ==============================
 %% Glossário
 %% ------------------------------
 %\glossary
 %% ==============================
 
-%% ==============================
 %% Apêndices
-%% ------------------------------
-%% Inicia os apêndices
-%% ------------------------------
 \begin{apendicesenv}
 \partapendices %% Imprime uma página indicando o início dos apêndices
 \chapter{Quisque libero justo} %% Divisão em capítulos, como no restante
