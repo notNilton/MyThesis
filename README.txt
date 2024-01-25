@@ -1,19 +1,31 @@
-Uso do modelo de TCC Latex:
+Uso do modelo de Trabalho de Conclusão de Curso em Latex:
 
-Toda a edição do texto será feita nos arquivos com extensão ".tex":
+Toda a edição do texto será feita nos arquivos com extensão ".tex"
 
-"main.tex" - Arquivo principal, onde serão feitas as alterações de dados de capa e incluídos os outros arquivos ".tex";
-"introducao.tex" - Arquivo da introdução, é incluído no "main.tex";
-"abreviaturas.tex" - Arquivo contendo as listas de abreviaturas usadas, mais detalhes no capítulo que ensina a usar o modelo;
-"abntex2-modelo-include-comandos.tex" - Arquivo que ensina como usar o modelo (seções, figuras, tabelas, ...);
+"Thesis.text" - Arquivo principal, onde serão feitas as alterações de dados de capa e incluídos os outros arquivos
+"Capitulos/Cap1-Introducao.tex" - Arquivo de introdução do trabalho de conclusão de curso.
+"Capitulos/Cap2-RevisaoBibliografica.tex" - Arquivo de revisão bibliografia.
+"Capitulos/Cap3-Metodologia.tex" - Arquivo de metodologia.
+"Capitulos/Cap4-Resultados.tex" - Arquivo de resultados.
+"Capitulos/Cap5-Conclusao.tex" - Arquivo de conclusão.
+"Capitulos/Template" - É um arquivo template não incluído no "Thesis.tex", leia-o para incluir outro capitulo.
 
-Recomendação: Use o arquivo "abntex2-modelo-include-comandos.tex" como modelo para os capítulos.
+Pos-Textuais:
 
-"abntex2-modelo-references.bib" - arquivo contendo as referências citadas no trabalho;
-"abntex2-modelo-img-grafico.pdf" - arquivo de imagem usado pelo arquivo "abntex2-modelo-include-comandos.tex";
+"PosTextuais/Anexo.tex" - Arquivo de Anexo.
+"PosTextuais/Apendice.tex" - Arquivo de Apendice.
 
-Não é recomendável mexer nos arquivos a seguir, a não ser que tenha conhecimento sobre manipulação de classes e pacotes:
+Pre-Textuais:
 
-"acronym.sty" - arquivo que define a estrutura das siglas e lista de siglas (definidas em "abreviaturas.tex");
-"faeng.cls" - arquivo de definições do modelo do TCC, esse arquivo da a estrutura para as informações dadas em "main.tex";
+"PreTextuais/Agradecimento.tex" - Arquivo de Anexo.
+"PreTextuais/Dedicatoria.tex"
+"PreTextuais/Epigrafe.tex"
+"PreTextuais/FichaAprovacao.tex"
+"PreTextuais/FichaCatalografica.tex"
+"PreTextuais/ListaSiglas.tex"
+"PreTextuais/ListaSimbolos.tex"
+"PreTextuais/Resumo.tex"
 
+
+Bibliografia:
+"Bibliografia/bibliografia.bib" - Arquivo que organiza a referência bibliográfica.
