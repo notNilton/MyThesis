@@ -1,117 +1,198 @@
-%================================================================%
-%=============  Modelo de Trabalho de Conclusão de curso ========%
-\documentclass[12pt, % tamanho da fonte
-	%openright,	% capítulos começam em pág ímpar
-	oneside, %para impressão apenas em um lado (formato digital).  		  
-	% twoside, %para impressão em frente e verso.  
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% Modelo UFSC para Trabalhos Academicos (tese de doutorado, dissertação de
+% mestrado) utilizando a classe abntex2
+%
+% Autor: Nilton Aguiar dos Santos
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão no anverso. Oposto a twoside
 	a4paper,			% tamanho do papel. 
-	english,			% Idioma adicional para hifenização
-	brazil				% Idioma principal 
-	]{packages/abntex2-pack}
-	
-\input{packages/packages}  % Estrutura do Texto e Pacotes Principais
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	%french,				% idioma adicional para hifenização
+	%spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
 
-% -- Informações para Capa e Folha de Rosto a serem editadas
+\usepackage{Pacotes/UFMTThesis}
 
-\titulo{DRD - Uma aplicação de Reconciliação de dados utilizando métodos de Lagrange} 
-% caso o trabalho não tenha subtítulo comentar linha abaixo e retirar dois pontos do título do trabalho
-% \subtitulo{Uma aplicação web de análise e reconciliação de dados utilizando métodos de Lagrange}
-
-\autor{Nilton Aguiar dos Santos} \autorcite{Santos, Nilton}
-\local{Várzea Grande} \uf{MT}
-\data{31 de agosto de 2024} \dia{31} \mes{08} \ano{2024} %deixar sem preencher antes do TCC
-\orientador{Prof. Dr. João Gustavo Coelho Pena}  % Nome do orientador 
-\ttorientador{UFMT} % Instituição do orientador
-\coorientador{Prof. Me. Nome do Coorientador}   % Nome do coorientador
-\ttcoorientador{UFMT} % Instituição do Coorientador
-\instituicao{Universidade Federal de Mato Grosso} \sigla{UFMT}
-\instituto{Instituto de Engenharia do Campus de Várzea Grande}
-\curso{Engenharia de Computação}	
-\tipotrabalho{Trabalho de conclusão de curso}
-\grau{Engenheiro de Computação}
-
-%------Nomes dos examinadores.  
-\examinadorum{Prof. Me. Membro da Banca 1} \ttexaminadorum{UFMT}
-\examinadordois{Prof. Dr. Membro da Banca  2} \ttexaminadordois{UFMT}
-
-% ------------------------------------------------------
-\makeindex   
-
-\begin{document} % Início do documento
-
-\frenchspacing  % Retira espaço obsoleto entre as frases.
-
-% ----------------------------------------------------------
-% -- Elementos Pré-Textuais: -------------------------------
-\pagenumbering{roman}
-
-\imprimircapa  % Capa
-\imprimirfolhaderosto % Folha de rosto
-
-\include{PreTextuais/FichaCatalografica}
-\include{PreTextuais/FichaAprovacao} 
-
-\include{PreTextuais/Dedicatoria}
-\include{PreTextuais/Agradecimento}
-\include{PreTextuais/Epigrafe}
-\include{PreTextuais/Resumo}
-
-\renewcommand{\listfigurename}{\large LISTA DE ILUSTRA\c{C}\~{O}ES}
-\pdfbookmark[0]{\listfigurename}{lof}
-\listoffigures*   % Cria a Lista de Figuras
-\cleardoublepage
-
-% inserir lista de quadros
 % ---
-\pdfbookmark[0]{\listofquadrosname}{loq}
-\listofquadros*
-\cleardoublepage
+% Filtering and Mapping Bibliographies
+% ---
+% Pacotes de citações
+% ---
+\usepackage{csquotes}
+\usepackage[backend = biber, style = abnt]{biblatex}
+% FIXME Se desejar estilo numérico de citações,  comente a linha acima e descomente a linha a seguir.
+% \usepackage[backend = biber, style = numeric-comp]{biblatex}
+
+\setlength\bibitemsep{\baselineskip}
+\DeclareFieldFormat{url}{Disponível~em:\addspace\url{#1}}
+\NewBibliographyString{sineloco}
+\NewBibliographyString{sinenomine}
+\DefineBibliographyStrings{brazil}{%
+	sineloco     = {\mkbibemph{S\adddot l\adddot}},
+	sinenomine   = {\mkbibemph{s\adddot n\adddot}},
+	andothers    = {\mkbibemph{et\addabbrvspace al\adddot}},
+	in			 = {\mkbibemph{In:}}
+}
+
+\addbibresource{PosTextuais/Bibliografia.bib} % Seus arquivos de referências
+
+% ---
+\DeclareSourcemap{
+	\maps[datatype=bibtex]{
+		% remove fields that are always useless
+		\map{
+			\step[fieldset=abstract, null]
+			\step[fieldset=pagetotal, null]
+		}
+		% remove URLs for types that are primarily printed
+%		\map{
+%			\pernottype{software}
+%			\pernottype{online}
+%			\pernottype{report}
+%			\pernottype{techreport}
+%			\pernottype{standard}
+%			\pernottype{manual}
+%			\pernottype{misc}
+%			\step[fieldset=url, null]
+%			\step[fieldset=urldate, null]
+%		}
+		\map{
+			\pertype{inproceedings}
+			% remove mostly redundant conference information
+			\step[fieldset=venue, null]
+			\step[fieldset=eventdate, null]
+			\step[fieldset=eventtitle, null]
+			% do not show ISBN for proceedings
+			\step[fieldset=isbn, null]
+			% Citavi bug
+			\step[fieldset=volume, null]
+		}
+	}
+}
 % ---
 
-\pdfbookmark[0]{\listtablename}{lot}
-\listoftables*  % Cria a lista de Tabelas
-\cleardoublepage
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+% FIXME Substituir 'Nome completo do autor' pelo seu nome.
+\autor{Nilton Aguiar dos Santos}
+% FIXME Substituir 'Título do trabalho' pelo título da trabalho.
+\titulo{DRD}
+% FIXME Substituir 'Subtítulo (se houver)' pelo subtítulo da trabalho.  
+% Caso não tenha substítulo, comente a linha a seguir.
+\subtitulo{Uma aplicação de reconciliação de dados utilizando métodos de Lagrange}
+% FIXME Substituir 'XXXXXX' pelo nome do seu
+% orientador.
+\orientador{Prof. Dr. João Gustavo Coelho Pena}
+% FIXME Se for orientado por uma mulher, comente a linha acima e descomente a linha a seguir.
+% \orientador[Orientadora]{Nome da orientadora, Dra.}
+% FIXME Substituir 'XXXXXX' pelo nome do seu
+% coorientador. Caso não tenha coorientador, comente a linha a seguir.
+% \coorientador{Prof. XXXXXX, Dr.}
+% FIXME Se for coorientado por uma mulher, comente a linha acima e descomente a linha a seguir.
+% \coorientador[Coorientadora]{XXXXXX, Dra.}
+% FIXME Substituir 'XXXXXX' pelo nome do Coordenador do 
+% programa/curso.
+% \coordenador{Prof. XXXXXX, Dr.}
+% FIXME Se for coordenadora mulher, comente a linha acima e descomente a linha a seguir.
+% \coordenador[Coordenadora]{Nome da Coordenadora, Dra.}
+% FIXME Substituir '[ano da entrega]' pelo ano (ano) em que seu trabalho foi defendido.
+\ano{2024}
+% FIXME Substituir '[dia] de [mês] de [ano]' pela data em que ocorreu sua defesa.
+\data{29 de Novembro de 2024}
+% FIXME Substituir '[Cidade da defesa]' pela cidade em que ocorreu sua defesa.
+\local{Cuiabá}
+\instituicaosigla{UFMT}
+\instituicao{Universidade Federal de Mato Grosso}
+% FIXME Substituir 'Dissertação/Tese' pelo tipo de trabalho (Tese, Dissertação). 
+\tipotrabalho{Trabalho de Conclusão de Curso}
+% FIXME Substituir '[licenciado/bacharel] em [nome do título obtido]' pela grau adequado.
+\formacao{Bacharel em Engenharia de Computação}
+% FIXME Substituir '[licenciado/bacharel]' pelo nivel adequado.
+\nivel{bacharel}
+% FIXME Substituir 'Curso de Graduação em [XXXXXXXX]' pela curso adequado.
+\programa{Engenharia de Computação}
+% FIXME Substituir 'Campus XXXXXX ou Centro de XXXXXX' pelo campus ou centro adequado.
+\centro{Campus de Várzea Grande}
+\preambulo
+{%
+\imprimirtipotrabalho~do~\imprimirprograma~do~\imprimircentro~da~\imprimirinstituicao~para~a~obtenção~do~título~de~\imprimirformacao.
+}
+% ---
 
-%\renewcommand{\listalgorithmcfname}{Lista de algoritmos}
-%\pdfbookmark[0]{\listalgorithmcfname}{lof}
-%\listofalgorithmes   % Cria a lista de Tabelas
-%\cleardoublepage
+% ---
+% Configurações de aparência do PDF final
+% ---
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={ufmt, latex, abntex2}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=black,%blue,          	% color of internal links
+    	citecolor=black,%blue,        		% color of links to bibliography
+    	filecolor=black,%magenta,      		% color of file links
+		urlcolor=black,%blue,
+		bookmarksdepth=4
+}
+\makeatother
 
-\include{PreTextuais/ListaSiglas}
-\include{PreTextuais/ListaSimbolos}
+% Declaração das siglas
+\siglalista{ABNT}{Associação Brasileira de Normas Técnicas}
 
+% Declaração dos simbolos
+\simbololista{C}{\ensuremath{C}}{Circunferência de um círculo}
+\simbololista{pi}{\ensuremath{\pi}}{Número pi} 
+\simbololista{r}{\ensuremath{r}}{Raio de um círculo}
+\simbololista{A}{\ensuremath{A}}{Área de um círculo}
 
-\pdfbookmark[0]{\contentsname}{toc}
-\tableofcontents*
+\makenoidxglossaries 
+\makeindex
 
-\cleardoublepage
+\begin{document}
+\selectlanguage{brazil}
+\frenchspacing 
+\OnehalfSpacing
 
+\input{PreTextuais/PreTextuais}
 
-
-
-% ----------------------------------------------------------
-% -- Capítulos do Trabalho: --------------------------------
-\pagenumbering{arabic} 
-\setcounter{page}{14} % Inserir aqui o número de páginas antes da introdução menos a capa
-\textual 
-
-%%%%%%%%%%%% ORDEM DOS ARQUIVOS %%%%%%%%%%%%%%%%%%%
+\textual
 
 \include{Capitulos/Cap1-Introducao}
-\include{Capitulos/Cap2-RevisaoBibliografica}
+\include{Capitulos/Cap2-ReferencialTeorico}
 \include{Capitulos/Cap3-Metodologia}
 \include{Capitulos/Cap4-Resultados}
 \include{Capitulos/Cap5-Conclusao}
 
+\begingroup
+    \SingleSpacing\printbibliography[title=REFERÊNCIAS]
+\endgroup
 
+\begin{apendicesenv} 
+    \input{PosTextuais/Apendice}
+\end{apendicesenv}
 
-% ----------------------------------------------------------
-% -- Elementos Pós-Textuais: -------------------------------
-\postextual  
-\bibliography{Bibliografia/bibliografia} % Referências bibliográficas
-\include{PosTextuais/Apendice}
-\include{PosTextuais/Anexo}
-%\includepdf[pages={1,3-5}]{PosTextuais/includepdfpages.pdf}
-%\phantompart  \printindex  % Indice Remissivo
-% ----------------------------------------------------------
-\end{document}  % fim do documento
+\begin{anexosenv}
+    \input{PosTextuais/Anexo}
+\end{anexosenv}
+\end{document}
